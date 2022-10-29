@@ -1,89 +1,92 @@
 <template>
-    <button class="btn" :class="[ variation ? `btn--${variation}`: '', size ? `btn--${size}` : '', type ? `btn--${type}` : '',]" >
-        <span><slot/></span>
-    </button>
-  
+  <button
+    class="btn"
+    :class="[
+      variation ? `btn--${variation}` : '',
+      size ? `btn--${size}` : '',
+      type ? `btn--${type}` : '',
+    ]"
+  >
+    <span><slot /></span>
+  </button>
 </template>
 
 <script>
 export default {
-  props:{
+  props: {
     size: {
       type: String,
-      default: "medium"
+      default: 'medium',
     },
     type: {
       type: String,
-      default: "default"
+      default: 'default',
     },
     variation: {
       type: String,
-      default: "primary"
-    }
-  }
+      default: 'primary',
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "@/static/css/variables";
+@import '@/static/css/variables';
 .btn {
-    height: 4.8rem;
-    background: $color-primary;
-    box-shadow: 0px .8rem 2.4rem rgba(146, 136, 224, 0.3);
-    border-radius: .8rem;
-    font-size: 1.4rem;
-    line-height: 140%;
-    color: $color-light;
-    width:18rem;
-    font-weight: 600;
+  height: 4.8rem;
+  background: $color-primary;
+  box-shadow: 0px 0.8rem 2.4rem rgba(146, 136, 224, 0.3);
+  border-radius: 0.8rem;
+  font-size: 1.4rem;
+  line-height: 140%;
+  color: $color-light;
+  width: 18rem;
+  font-weight: 500;
 
-    & span{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width:100%;
-    }
+  & span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
 
-    &--primary{
-      min-width: 18rem;
-      border: 1px solid transparent;
-    }
+  &--primary {
+    min-width: 18rem;
+    border: 1px solid transparent;
+  }
 
-    &--outline {
-      background: $color-light;
-      color: $color-primary;
-      border: 1px solid $color-primary;
-    }
+  &--outline {
+    background: $color-light;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+  }
 
-    &--secondary{
-      background: $color-secondary;
-      border: 1px solid $color-secondary;
-    }
+  &--secondary {
+    background: $color-secondary;
+    border: 1px solid $color-secondary;
+  }
 
-    &--outline-dark{
-      background: $color-dark-bg-2;
-      border: 1px solid $color-primary;
-      color: $color-primary;
-    }
+  &--outline-dark {
+    background: $color-dark-bg-2;
+    border: 1px solid $color-primary;
+    color: $color-primary;
+  }
 
-    &--small{
-      min-width: unset;
-      width: auto;
-      height: 34px;
-      padding: .7rem 1.2rem;
-    }
+  &--small {
+    min-width: unset;
+    width: auto;
+    height: 34px;
+    padding: 0.7rem 1.2rem;
+  }
 
-    &--icon {
-      min-width: 4.8rem;
-      width:4.8rem;
-    }
+  &--icon {
+    min-width: 4.8rem;
+    width: 4.8rem;
+  }
 
-    &:hover{
-      transition: all .3s;
-      opacity: 0.9;
-    }
-
+  &:hover {
+    transition: all 0.3s;
+    opacity: 0.9;
+  }
 }
-
-
 </style>
