@@ -7,7 +7,7 @@
       type ? `btn--${type}` : '',
     ]"
   >
-    <span><slot /></span>
+    <span class="animate-scale"><slot /></span>
   </button>
 </template>
 
@@ -35,13 +35,14 @@ export default {
 .btn {
   height: 4.8rem;
   background: $color-primary;
-  box-shadow: 0px 0.8rem 2.4rem rgba(146, 136, 224, 0.3);
+  // box-shadow: 0px 0.8rem 2.4rem rgba(146, 136, 224, 0.3);
   border-radius: 0.8rem;
   font-size: 1.4rem;
   line-height: 140%;
   color: $color-light;
   width: 18rem;
   font-weight: 500;
+  cursor: pointer;
 
   & span {
     display: flex;
@@ -78,15 +79,13 @@ export default {
     height: 34px;
     padding: 0.7rem 1.2rem;
   }
+  &--full {
+    width: 100%;
+  }
 
   &--icon {
     min-width: 4.8rem;
     width: 4.8rem;
-  }
-
-  &:hover {
-    transition: all 0.3s;
-    opacity: 0.9;
   }
 }
 </style>

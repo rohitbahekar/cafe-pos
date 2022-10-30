@@ -1,5 +1,6 @@
 <template>
   <div class="sidebar-wrapper">
+    <!-- Restaurant icon -->
     <svg
       width="56"
       height="56"

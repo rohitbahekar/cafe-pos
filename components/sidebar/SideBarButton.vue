@@ -1,5 +1,6 @@
 <template>
   <button class="sidebar-button" role="button">
+    <!-- Background curve -->
     <svg
       v-if="isActive"
       width="93"
@@ -23,7 +24,7 @@
     </svg>
 
     <div
-      class="sidebar-button__content"
+      class="sidebar-button__content animate-scale"
       :class="[isActive ? 'sidebar-button__content--active' : '']"
     >
       <slot :is-active="isActive" />

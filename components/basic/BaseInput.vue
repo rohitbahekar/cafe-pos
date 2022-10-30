@@ -29,14 +29,22 @@ export default {
       type: String,
       default: undefined,
     },
-    icon: String,
-    type: String,
+    icon: {
+      type: String,
+      default: undefined,
+      required: true
+    },
+    type: {
+      type: String,
+      default: 'text',
+    },
     iconColor: {
       type: String,
       default: 'light',
     },
     value: {
       type: [String, Number],
+      default: ''
     },
   },
   computed: {
@@ -103,6 +111,8 @@ export default {
   &:focus {
     outline: 2px solid lightblue;
     & > input {
+      border: none;
+      background: transparent;
       outline: none;
     }
   }

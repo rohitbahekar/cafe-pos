@@ -58,19 +58,27 @@
       {{ model }}
     </div>
 
-    <div>
+    <div style="grid-row:1/4">
       <h2>Sidebar</h2>
       <SideBarMenu />
+    </div>
+
+    <div>
+      <h2>ItemCard</h2>
+      <br>
+      <ItemCard />
     </div>
   </div>
 </template>
 
 <script>
 import SideBarMenu from '@/components/sidebar/SideBarMenu.vue'
+import ItemCard from '@/components/ItemCard.vue'
 export default {
   name: 'IndexPage',
   components: {
     SideBarMenu,
+    ItemCard,
   },
   data() {
     return {
