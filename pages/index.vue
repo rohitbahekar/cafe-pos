@@ -1,84 +1,31 @@
 <template>
-  <div id="wrapper">
-    <div>
-      <h2>Buttons</h2>
-      <BaseButton> Hello Button </BaseButton>
-      <BaseButton variation="outline"> Hello Button </BaseButton>
-      <BaseButton variation="outline-dark"> Hello Button </BaseButton>
-      <BaseButton variation="secondary"> Hello Button </BaseButton>
-      <BaseButton type="icon">
-        <IconComponent name="add" color="light" />
-      </BaseButton>
-      <BaseButton type="icon" variation="secondary">
-        <IconComponent name="coin" color="light" />
-      </BaseButton>
-      <BaseButton type="icon" variation="outline">
-        <IconComponent name="coin" color="primary" />
-      </BaseButton>
-      <BaseButton type="icon" variation="outline-dark">
-        <IconComponent name="add" color="primary"
-      /></BaseButton>
-      <BaseButton variation="secondary">
-        <IconComponent name="add" color="light" style="margin-right: 0.8rem" />
-        Confirm</BaseButton
-      >
-      <BaseButton variation="outline">
-        <IconComponent
-          name="add"
-          color="primary"
-          style="margin-right: 0.8rem"
-        />
-        Confirm</BaseButton
-      >
-      <BaseButton variation="outline-dark">
-        <IconComponent
-          name="add"
-          color="primary"
-          style="margin-right: 0.8rem"
-        />
-        Confirm</BaseButton
-      >
-      <BaseButton variation="primary">
-        <IconComponent name="add" color="light" style="margin-right: 0.8rem" />
-        Confirm</BaseButton
-      >
-      <BaseButton size="small">Small</BaseButton>
-      <BaseButton size="small" variation="outline">Small</BaseButton>
-      <BaseButton size="small" variation="outline-dark"
-        >Small with lengthy content</BaseButton
-      >
+  <div class="page homepage">
+    <div class="header">
+        <div class="header__left">
+          <h1 class="restaurant_name">Shawarma Central</h1>
+          <p class="header__date" >Tuesday, 11 Nov 2022</p>
+        </div>
+        <div class="header__right">
+          <BaseInput icon="search" placeholder="Search for food eg. Coffee Burger" />
+        </div>
     </div>
 
-    <div>
-      <h2>Input</h2>
-      <BaseInput placeholder="Enter someting" />
-      <BaseInput type="email" small />
-      <BaseInput type="number" small />
-      <BaseInput v-model="model" type="email" icon="restaurant" small />
-      {{ model }}
+    <div class="horizontal-list ">
+      <span class="horizontal-list__item horizontal-list__item--active">Hot Dishes</span>
+      <span class="horizontal-list__item">Cold Dishes</span>
+      <span class="horizontal-list__item">Soup</span>
+      <span class="horizontal-list__item">Grill</span>
     </div>
 
-    <div style="grid-row:1/4">
-      <h2>Sidebar</h2>
-      <SideBarMenu />
-    </div>
-
-    <div>
-      <h2>ItemCard</h2>
-      <br>
-      <ItemCard :item="item" />
-      <ItemCard read-only :item="item2"/>
-    </div>
+    <ItemCard :item="item" read-only/>
   </div>
 </template>
 
 <script>
-import SideBarMenu from '@/components/sidebar/SideBarMenu.vue'
 import ItemCard from '@/components/ItemCard.vue'
 export default {
   name: 'IndexPage',
   components: {
-    SideBarMenu,
     ItemCard,
   },
   data() {
@@ -109,14 +56,66 @@ export default {
 }
 </script>
 
-<style lang="scss">
-body {
-  background-color: #111;
-  color: white;
+<style lang="scss" scoped>
+@import '@/static/css/variables';
+@import '@/static/css/global';
+
+.homepage{
+  display: grid;
+  row-gap: 2rem;
+  grid-template-rows: min-content;
 }
 
-#wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.header{
+  margin: 2rem;
+  display: flex;
+  justify-content: space-between;
+  height:6.5rem;
+
+  &__date{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color:$color-text-light;
+    margin-top:4px;
+  }
+  &__right{
+    width: 22rem;
+    padding: auto 0;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.horizontal-list{
+  margin: 0 2rem;
+  height: 3.3rem;
+  display: flex;
+  column-gap: 3.2rem;
+  border-bottom: 1px solid $color-dark;
+  &__item{
+    @extend .animate-scale;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.96rem;
+    height:100%;
+    position: relative;
+    user-select: none;
+
+    &--active{
+      color: $color-primary;
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        height:.3rem;
+        width:60%;
+        background-color: $color-primary;
+        border-radius: .5rem;
+      }
+    }
+  }
 }
 </style>

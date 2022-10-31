@@ -57,9 +57,9 @@ export default {
     return {
       activeIndex: 0,
       items: [
-        'dashboard',
         'home',
         'discount',
+        'dashboard',
         'message',
         'notification',
         'setting',
@@ -67,7 +67,6 @@ export default {
       ],
     }
   },
-  mounted() {},
   methods: {
     setActive(index) {
       this.activeIndex = index

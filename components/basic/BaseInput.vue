@@ -4,12 +4,14 @@
     <IconComponent
       :name="icon"
       :color="iconColor"
+      size="large"
       class="input__icon"
     ></IconComponent>
     <input
       v-bind="attributes"
       :type="type"
       :value="value"
+      :placeholder="placeholder"
       @input="$emit('input', $event.target.value)"
       @change="$emit('change', $event)"
       @blur="$emit('blur', $event)"
@@ -42,6 +44,10 @@ export default {
       type: String,
       default: 'light',
     },
+    placeholder: {
+      type: String,
+      default: '',
+    },
     value: {
       type: [String, Number],
       default: ''
@@ -63,7 +69,7 @@ export default {
 .input {
   height: 4.8rem;
   min-width: 10rem;
-  background-color: $color-dark;
+  background: #2D303E;;
   border: 0.1rem solid $color-dark;
   color: $color-light;
   padding: 1.4rem;
@@ -73,7 +79,7 @@ export default {
   outline: none;
 
   &::placeholder {
-    color: $color-dark-grey;
+    color: $color-text-light;
   }
 
   &input[type='number']::-webkit-outer-spin-button,
