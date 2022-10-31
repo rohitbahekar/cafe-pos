@@ -32,7 +32,7 @@ export default {
     icon: {
       type: String,
       default: undefined,
-      required: true
+      required: false
     },
     type: {
       type: String,

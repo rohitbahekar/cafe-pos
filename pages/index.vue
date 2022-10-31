@@ -66,7 +66,8 @@
     <div>
       <h2>ItemCard</h2>
       <br>
-      <ItemCard />
+      <ItemCard :item="item" />
+      <ItemCard read-only :item="item2"/>
     </div>
   </div>
 </template>
@@ -83,6 +84,26 @@ export default {
   data() {
     return {
       model: '',
+      item:{
+        id: 1,
+        name: 'Spicy seasoned seafood noodles',
+        genericName: "seafood noodles",
+        image: '/images/Image 1.png',
+        price: 69,
+        currencySymbol: '₹',
+        qtyAvailable: 20,
+        qtyUnit: 'bowls'
+      },
+      item2:{
+        id: 1,
+        name: 'Spicy seasoned seafood noodles',
+        genericName: "seafood noodles",
+        image: 'https://images.pexels.com/photos/2092906/pexels-photo-2092906.jpeg?auto=compress&cs=tinysrgb&w=150',
+        price: 69,
+        currencySymbol: '₹',
+        qtyAvailable: 20,
+        qtyUnit: 'bowls'
+      }
     }
   },
 }

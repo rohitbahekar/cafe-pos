@@ -53,8 +53,16 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
+      name:'Cafe POS',
       lang: 'en',
+      useWebmanifestExtension: false,
+      start_url : '.',
+      background_color: '#393c49',
+      theme_color: '#ea7c69'
     },
+    icon: {
+      source: '@/static/icon.png'
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
