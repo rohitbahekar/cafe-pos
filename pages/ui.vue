@@ -58,30 +58,30 @@
       {{ model }}
     </div>
 
-    <div style="grid-row:1/4">
+    <div style="grid-row: 1/4">
       <h2>Sidebar</h2>
       <SideBarMenu />
     </div>
 
     <div>
       <h2>ItemCard</h2>
-      <br>
+      <br />
       <ItemCard :item="item" />
-      <ItemCard read-only :item="item2"/>
+      <ItemCard read-only :item="item2" />
     </div>
     <div>
       <h2>Select</h2>
-      <br>
+      <br />
       <BaseSelect value="two" small>
-        <option value="one"> One</option>
-        <option value="two"> Two</option>
-        <option value="twentyfour"> Twenty Four</option>
+        <option value="one">One</option>
+        <option value="two">Two</option>
+        <option value="twentyfour">Twenty Four</option>
       </BaseSelect>
-      
+
       <BaseSelect value="twentyfour" class="bg-dark-2">
-        <option value="one"> One</option>
-        <option value="two"> Two</option>
-        <option value="twentyfour"> Dine In</option>
+        <option value="one">One</option>
+        <option value="two">Two</option>
+        <option value="twentyfour">Dine In</option>
       </BaseSelect>
     </div>
   </div>
@@ -99,26 +99,27 @@ export default {
   data() {
     return {
       model: '',
-      item:{
+      item: {
         id: 1,
         name: 'Spicy seasoned seafood noodles',
-        genericName: "seafood noodles",
+        genericName: 'seafood noodles',
         image: '/images/Image 1.png',
         price: 69,
         currencySymbol: '₹',
         qtyAvailable: 20,
-        qtyUnit: 'bowls'
+        qtyUnit: 'bowls',
       },
-      item2:{
+      item2: {
         id: 1,
         name: 'Spicy seasoned seafood noodles',
-        genericName: "seafood noodles",
-        image: 'https://images.pexels.com/photos/2092906/pexels-photo-2092906.jpeg?auto=compress&cs=tinysrgb&w=150',
+        genericName: 'seafood noodles',
+        image:
+          'https://images.pexels.com/photos/2092906/pexels-photo-2092906.jpeg?auto=compress&cs=tinysrgb&w=150',
         price: 69,
         currencySymbol: '₹',
         qtyAvailable: 20,
-        qtyUnit: 'bowls'
-      }
+        qtyUnit: 'bowls',
+      },
     }
   },
 }

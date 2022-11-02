@@ -1,0 +1,16 @@
+.animate-scale {
+  transition: all 0.3s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &:active:hover {
+    transform: scale(0.98);
+  }
+}
+
+.menu-icon:hover {
+  transform: scale(1.05) rotate(15deg);
+  transition: all 0.5s;
+}

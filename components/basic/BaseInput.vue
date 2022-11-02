@@ -1,6 +1,14 @@
 <template>
-  <input v-if="!icon" v-bind="attributes" />
-  <div v-else v-bind="attributes" class="input--icon">
+  <input
+    v-if="!icon"
+    v-bind="attributes"
+    class="input"
+    @input="$emit('input', $event.target.value)"
+    @change="$emit('change', $event)"
+    @blur="$emit('blur', $event)"
+    @focus="$emit('change', $event)"
+  />
+  <div v-else v-bind="attributes" class="input input--icon">
     <IconComponent
       :name="icon"
       :color="iconColor"
@@ -34,7 +42,7 @@ export default {
     icon: {
       type: String,
       default: undefined,
-      required: false
+      required: false,
     },
     type: {
       type: String,
@@ -50,26 +58,33 @@ export default {
     },
     value: {
       type: [String, Number],
-      default: ''
+      default: '',
     },
   },
   computed: {
     attributes() {
       return {
-        class: ['input', this.small !== undefined ? 'input--small' : ''],
+        class: [this.small !== undefined ? 'input--small' : ''],
+        type: this.type,
+        value: this.value,
+        placeholder: this.placeholder,
       }
     },
   },
 }
 </script>
 
-<style class="scoped" lang="scss">
+<style scoped lang="scss">
 @import '@/static/css/variables';
 
 .input {
+  & > input {
+    background-color: transparent;
+    height: 100%;
+  }
   height: 4.8rem;
+  background: #2d303e;
   min-width: 10rem;
-  background: #2D303E;;
   border: 0.1rem solid $color-dark;
   color: $color-light;
   padding: 1.4rem;
@@ -93,8 +108,8 @@ export default {
   }
 
   &--small {
-    min-width: none;
-    width: min-content;
+    min-width: unset;
+    width: inherit;
   }
 
   &__icon {
@@ -102,15 +117,20 @@ export default {
   }
 
   &--icon {
-    display: flex;
-    align-items: center;
-    padding: 0 1.4rem;
+    padding: 0;
+    position: relative;
+
+    & > .input__icon {
+      position: absolute;
+      left: 1.4rem;
+      top: 1.2rem;
+    }
 
     & > input {
       border: none;
       outline: none;
       width: 100%;
-      padding: 0;
+      padding-left: 4.2rem;
     }
   }
   &--icon:focus-within,

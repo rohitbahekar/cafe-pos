@@ -12,5 +12,12 @@ module.exports = {
   extends: ['@nuxtjs', 'plugin:nuxt/recommended', 'prettier'],
   plugins: ['jest'],
   // add your custom rules here
-  rules: {},
+  rules: {
+    'vue/multi-word-component-names': [
+      'error',
+      {
+        ignores: ['default'],
+      },
+    ],
+  },
 }

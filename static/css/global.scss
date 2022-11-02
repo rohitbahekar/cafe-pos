@@ -1,7 +1,11 @@
 @import './variables';
+@import './animation';
+
 html {
+  // making 1rem == 10px
   font-size: 62.5%;
 }
+
 html,
 * {
   margin: 0;
@@ -10,36 +14,49 @@ html,
   font-family: 'Barlow', sans-serif;
   color: $color-light;
 }
+
 body {
   font-size: 1.4rem;
 }
 
-.icon-margin-right{
-  margin-right: .8rem;
-}
-
-.bg-dark-2{
-  background-color: $color-dark-bg-2;
-}
-
-.animate-scale{
-  transition: all 0.3s;
-  
-  &:hover{
-    transform: scale(1.02);
-  }
-  &:active:hover{
-    transform: scale(.98);
-  }
+h1,
+h2 {
+  font-weight: 600;
+  line-height: 140%;
 }
 
 h1 {
-  font-weight: 600;
   font-size: 28px;
-  line-height: 140%;
-  color: $color-light;
 }
 
-.page, body {
+h2 {
+  font-size: 20px;
+}
+
+.page,
+body {
   background-color: $color-dark-bg-1;
+}
+
+.icon-margin-right {
+  margin-right: 0.8rem;
+}
+
+.bg-dark-2 {
+  background-color: $color-dark-bg-2;
+}
+
+.df-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.df-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
 }

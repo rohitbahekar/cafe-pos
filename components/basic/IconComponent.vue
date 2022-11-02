@@ -40,7 +40,8 @@ export default {
   margin-top: 4px;
   display: inline;
 
-  & svg, &--medium {
+  & svg,
+  &--medium {
     transform: scale(calc(20 / 24));
   }
 

@@ -39,6 +39,7 @@
       <IconComponent
         size="large"
         :name="menuItem"
+        class="menu-icon"
         :color="slotProps.isActive ? 'light' : 'primary'"
       />
     </SideBarButton>
@@ -83,8 +84,10 @@ export default {
   flex-direction: column;
   background: $color-dark-bg-2;
   border-radius: 1.6rem;
-  padding-bottom: 2rem;
+  // padding-bottom: 2rem;
   padding-top: 0.8rem;
+  max-height: 100vh;
+  overflow-y: scroll;
 }
 
 .logo {

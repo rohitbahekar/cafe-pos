@@ -1,85 +1,111 @@
 <template>
   <div class="page homepage">
-    <div class="header">
+    <div class="homepage__left">
+      <div class="header">
         <div class="header__left">
           <h1 class="restaurant_name">Shawarma Central</h1>
-          <p class="header__date" >Tuesday, 11 Nov 2022</p>
+          <p class="header__date">Tuesday, 11 Nov 2022</p>
         </div>
         <div class="header__right">
-          <BaseInput icon="search" placeholder="Search for food eg. Coffee Burger" />
+          <BaseInput
+            icon="search"
+            placeholder="Search for food, coffee, etc."
+          />
         </div>
+      </div>
+      <HorizontalList :items="categories" />
+      <div class="content-card">
+        <div class="content-card__header">
+          <h2>Choose Dishes</h2>
+          <BaseSelect>
+            <option value="dine-in">Dine In</option>
+            <option value="tk">Take away</option>
+          </BaseSelect>
+        </div>
+        <div class="content-card__body">
+          <ItemCard
+            v-for="(item, index) in items"
+            :key="'item' + index"
+            :item="item"
+            read-only
+          />
+          <ItemCard
+            v-for="(item, index) in items"
+            :key="'item' + index"
+            :item="item"
+            read-only
+          />
+        </div>
+      </div>
     </div>
-
-    <div class="horizontal-list ">
-      <span class="horizontal-list__item horizontal-list__item--active">Hot Dishes</span>
-      <span class="horizontal-list__item">Cold Dishes</span>
-      <span class="horizontal-list__item">Soup</span>
-      <span class="horizontal-list__item">Grill</span>
+    <div class="homepage__right">
+      <Billing />
     </div>
-
-    <ItemCard :item="item" read-only/>
   </div>
 </template>
 
 <script>
 import ItemCard from '@/components/ItemCard.vue'
+import { getItems } from '@/services/items'
+import HorizontalList from '~/components/HorizontalList.vue'
+import Billing from '~/components/billing/BillingMain.vue'
 export default {
   name: 'IndexPage',
   components: {
     ItemCard,
+    HorizontalList,
+    Billing,
   },
   data() {
     return {
       model: '',
-      item:{
-        id: 1,
-        name: 'Spicy seasoned seafood noodles',
-        genericName: "seafood noodles",
-        image: '/images/Image 1.png',
-        price: 69,
-        currencySymbol: '₹',
-        qtyAvailable: 20,
-        qtyUnit: 'bowls'
-      },
-      item2:{
-        id: 1,
-        name: 'Spicy seasoned seafood noodles',
-        genericName: "seafood noodles",
-        image: 'https://images.pexels.com/photos/2092906/pexels-photo-2092906.jpeg?auto=compress&cs=tinysrgb&w=150',
-        price: 69,
-        currencySymbol: '₹',
-        qtyAvailable: 20,
-        qtyUnit: 'bowls'
-      }
+      items: getItems(),
+      categories: ['Hot Dishes', 'Cold Dishes', 'Soup', 'Grill'],
     }
   },
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '@/static/css/variables';
-@import '@/static/css/global';
+@import '@/static/css/animation';
 
-.homepage{
+.homepage {
   display: grid;
-  row-gap: 2rem;
-  grid-template-rows: min-content;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  grid-template-columns: 1fr 41rem;
+
+  &__left {
+    padding: 2.4rem;
+    display: grid;
+    height: inherit;
+    grid-template-rows: 6.5rem 3.3rem 1fr;
+    grid-template-columns: 1fr;
+    row-gap: 2.4rem;
+    flex-direction: column;
+    word-wrap: initital;
+  }
 }
 
-.header{
-  margin: 2rem;
+.header {
   display: flex;
   justify-content: space-between;
-  height:6.5rem;
 
-  &__date{
+  &__date {
     font-weight: 400;
     font-size: 16px;
     line-height: 140%;
-    color:$color-text-light;
-    margin-top:4px;
+    color: $color-text-light;
+    margin-top: 4px;
   }
-  &__right{
+  & h1 {
+    max-height: 3.9rem;
+    overflow: hidden;
+  }
+
+  &__right {
     width: 22rem;
     padding: auto 0;
     display: flex;
@@ -87,35 +113,24 @@ export default {
   }
 }
 
-.horizontal-list{
-  margin: 0 2rem;
-  height: 3.3rem;
+.content-card {
   display: flex;
-  column-gap: 3.2rem;
-  border-bottom: 1px solid $color-dark;
-  &__item{
-    @extend .animate-scale;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1.4rem;
-    line-height: 1.96rem;
-    height:100%;
-    position: relative;
-    user-select: none;
+  flex-direction: column;
+  row-gap: 2.4rem;
+  overflow: hidden;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
 
-    &--active{
-      color: $color-primary;
-      &::before {
-        content: "";
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        height:.3rem;
-        width:60%;
-        background-color: $color-primary;
-        border-radius: .5rem;
-      }
-    }
+  &__body {
+    display: grid;
+    column-gap: 2.8rem;
+    grid-template-columns: repeat(auto-fill, 19.2rem);
+    row-gap: 2.4rem;
+    overflow-y: scroll;
+    justify-content: center;
   }
 }
 </style>

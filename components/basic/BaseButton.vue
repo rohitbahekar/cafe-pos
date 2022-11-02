@@ -60,6 +60,9 @@ export default {
     background: $color-light;
     color: $color-primary;
     border: 1px solid $color-primary;
+    & > span {
+      color: $color-primary;
+    }
   }
 
   &--secondary {
@@ -69,8 +72,10 @@ export default {
 
   &--outline-dark {
     background: $color-dark-bg-2;
-    border: 1px solid $color-primary;
-    color: $color-primary;
+    border: 1px solid $color-dark-bg-1;
+    & > span {
+      color: $color-primary;
+    }
   }
 
   &--small {
