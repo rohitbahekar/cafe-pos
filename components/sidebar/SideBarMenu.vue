@@ -29,20 +29,22 @@
       </defs>
     </svg>
 
-    <SideBarButton
-      v-for="(menuItem, index) in items"
-      v-slot="slotProps"
-      :key="menuItem"
-      :is-active="activeIndex == index"
-      @click.native="setActive(index)"
-    >
-      <IconComponent
-        size="large"
-        :name="menuItem"
-        class="menu-icon"
-        :color="slotProps.isActive ? 'light' : 'primary'"
-      />
-    </SideBarButton>
+    <template v-for="(menuItem, index) in items">
+      <NuxtLink :key="menuItem.icon" :to="menuItem.route">
+        <SideBarButton
+          v-slot="slotProps"
+          :is-active="activeIndex == index"
+          @click.native="setActive(index)"
+        >
+          <IconComponent
+            size="large"
+            :name="menuItem.icon"
+            class="menu-icon"
+            :color="slotProps.isActive ? 'light' : 'primary'"
+          />
+        </SideBarButton>
+      </NuxtLink>
+    </template>
   </div>
 </template>
 
@@ -58,13 +60,13 @@ export default {
     return {
       activeIndex: 0,
       items: [
-        'home',
-        'discount',
-        'dashboard',
-        'message',
-        'notification',
-        'setting',
-        'logout',
+        { icon: 'home', route: '/' },
+        { icon: 'discount', route: '/' },
+        { icon: 'dashboard', route: '/' },
+        { icon: 'message', route: '/' },
+        { icon: 'notification', route: '/' },
+        { icon: 'setting', route: '/settings' },
+        { icon: 'logout', route: '/' },
       ],
     }
   },
@@ -92,6 +94,7 @@ export default {
 
 .logo {
   align-self: center;
+  min-height: 5.6rem;
   margin: 1.6rem 0;
 }
 </style>

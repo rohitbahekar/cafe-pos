@@ -4,7 +4,12 @@
       <img :src="item.image" class="item__thumbnail" />
       <div class="item__title">{{ item.name }}</div>
     </div>
-    <BaseInput v-model="qty" type="number" size="small" data-show-buttons="true" />
+    <BaseInput
+      v-model="qty"
+      type="number"
+      size="small"
+      data-show-buttons="true"
+    />
     <div class="item__total">
       <div class="item__price">{{ item.currencySymbol }}{{ item.price }}</div>
       <span>{{ item.currencySymbol }}{{ itemTotal }}</span>
@@ -43,10 +48,7 @@
           class="modifier-btn"
           @click.native="note = 'Less Spicy'"
         >
-          <img
-            src="/icons/hollow-chilli.png"
-            alt="Less Spicy"
-          />
+          <img src="/icons/hollow-chilli.png" alt="Less Spicy" />
         </BaseButton>
       </div>
     </template>
@@ -70,8 +72,8 @@ export default {
   },
   computed: {
     itemTotal() {
-      let qty = 0;
-      if(this.qty) qty = parseInt(this.qty)
+      let qty = 0
+      if (this.qty) qty = parseInt(this.qty)
       return this.item.price * qty
     },
   },
@@ -128,9 +130,9 @@ export default {
       margin-left: -0.7rem;
     }
   }
-  .modifier-input{
+  .modifier-input {
     grid-column: 1/3;
-    margin-left: .2rem;
+    margin-left: 0.2rem;
   }
 }
 </style>

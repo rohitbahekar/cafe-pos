@@ -1,17 +1,19 @@
 <template>
   <div class="billing">
     <div class="df-row billing__header">
-
       <h2 class="billing__number">Orders #34562</h2>
     </div>
     <div class="billing__type">
-      <BaseButton 
-        v-for="(billType, index) in billTypes" 
-        :key="billType.value" 
-        size="small" 
-        :variation="billTypeSelectedIndex === index ? 'primary' : 'outline-dark'"
-        @click="billTypeSelectedIndex = index" >
-        {{billType.label }}
+      <BaseButton
+        v-for="(billType, index) in billTypes"
+        :key="billType.value"
+        size="small"
+        :variation="
+          billTypeSelectedIndex === index ? 'primary' : 'outline-dark'
+        "
+        @click="billTypeSelectedIndex = index"
+      >
+        {{ billType.label }}
       </BaseButton>
     </div>
     <div class="item-list">
@@ -57,28 +59,28 @@ export default {
       billTypes: [
         {
           label: 'Dine In',
-          value: 'dine-in'
+          value: 'dine-in',
         },
         {
           label: 'To Go',
-          value: 'Takeaway'
+          value: 'Takeaway',
         },
         {
           label: 'Delivery',
-          value: 'delivery'
+          value: 'delivery',
         },
         {
           label: 'Car',
-          value: 'car-delivery'
+          value: 'car-delivery',
         },
       ],
       items: getItems(),
     }
   },
-  methods:{
-    onBillTypeClick(billType){
+  methods: {
+    onBillTypeClick(billType) {
       this.billTypeSelected = billType
-    }
+    },
   },
 }
 </script>
@@ -134,7 +136,7 @@ export default {
         margin-bottom: 4.2rem;
       }
 
-      &__value{
+      &__value {
         font-weight: 500;
         font-size: 1.6rem;
       }

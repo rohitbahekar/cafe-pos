@@ -29,12 +29,6 @@
             :item="item"
             read-only
           />
-          <ItemCard
-            v-for="(item, index) in items"
-            :key="'item' + index"
-            :item="item"
-            read-only
-          />
         </div>
       </div>
     </div>
@@ -51,21 +45,21 @@ import HorizontalList from '~/components/HorizontalList.vue'
 import Billing from '~/components/billing/BillingMain.vue'
 export default {
   name: 'IndexPage',
-  layout: 'main',
-  head(){
-    return {title: 'Home'}
-  },
   components: {
     ItemCard,
     HorizontalList,
     Billing,
   },
+  layout: 'main',
   data() {
     return {
       model: '',
       items: getItems(),
       categories: ['Hot Dishes', 'Cold Dishes', 'Soup', 'Grill'],
     }
+  },
+  head() {
+    return { title: 'Home' }
   },
 }
 </script>

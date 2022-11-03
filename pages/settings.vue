@@ -1,0 +1,134 @@
+<template>
+  <div class="page settings-page">
+    <h1 class="heading">Settings</h1>
+    <div class="secondary-menu">
+      <div
+        v-for="item in menuItems"
+        :key="item.title"
+        class="secondary-menu__item item"
+        :class="[item.icon == 'discount' ? 'item--active' : '']"
+      >
+        <IconComponent :name="item.icon" color="light" class="item__icon" />
+        <h3 class="item__title">{{ item.title }}</h3>
+        <p class="item__description">{{ item.description }}</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  layout: 'main',
+  data() {
+    return {
+      menuItems: [
+        {
+          icon: 'appereance',
+          title: 'Appearance',
+          description: 'Dark and Light mode, Font size',
+        },
+        {
+          icon: 'restaurant',
+          title: 'Restaurant',
+          description: 'Dark and Light mode, Font size',
+        },
+        {
+          icon: 'discount',
+          title: 'Products Management',
+          description: 'Manage your product, pricing, etc',
+        },
+        {
+          icon: 'notification',
+          title: 'Notifications',
+          description: 'Customize your notifications',
+        },
+        {
+          icon: 'security',
+          title: 'Security',
+          description: 'Configure Password, PIN, etc',
+        },
+        {
+          icon: 'aboutus',
+          title: 'About Us',
+          description: 'Find out more about Posly',
+        },
+      ],
+    }
+  },
+  head() {
+    return {
+      title: 'Settings',
+    }
+  },
+}
+</script>
+
+<style lang="scss" scoped>
+@import '@/static/css/variables';
+
+.settings-page {
+  display: grid;
+  padding: 2.4rem;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  grid-template-columns: 27.5rem 1fr;
+  grid-template-rows: auto 1fr;
+  row-gap: 2.4rem;
+
+  .heading {
+    grid-column: 1/3;
+  }
+
+  .secondary-menu {
+    height: 100%;
+    background-color: $color-dark-bg-2;
+    border-radius: 0.8rem;
+
+    .item {
+      padding: 2.4rem;
+      display: grid;
+      grid-template-columns: 1.6rem 1fr;
+      column-gap: 0.8rem;
+      row-gap: 0.4rem;
+      grid-template-areas:
+        'icon title'
+        'icon description';
+
+      &--active {
+        background-color: rgba($color-primary, 0.26);
+        position: relative;
+        &::after {
+          content: '';
+          position: absolute;
+          top: 2.4rem;
+          right: 0;
+          height: 4rem;
+          width: 0.4rem;
+          background: $color-primary;
+          border-radius: 30px;
+        }
+      }
+
+      &__icon {
+        grid-area: icon;
+        margin-top: -0.4rem;
+      }
+      &__title {
+        grid-area: title;
+        color: $color-light;
+        font-weight: 500;
+        font-size: 1.4rem;
+        line-height: 130%;
+      }
+      &__description {
+        grid-area: description;
+        font-weight: 400;
+        font-size: 1.2rem;
+        line-height: 140%;
+        color: $color-text-light;
+      }
+    }
+  }
+}
+</style>
