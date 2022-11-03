@@ -23,11 +23,11 @@
     <div class="billing__footer">
       <div class="footer-item">
         <div class="footer-item__title">Discount</div>
-        <div class="footer-item__value">$0</div>
+        <div class="footer-item__value">₹0</div>
       </div>
       <div class="footer-item footer-item--last">
         <div class="footer-item__title">Sub total</div>
-        <div class="footer-item__value">$0</div>
+        <div class="footer-item__value">₹0</div>
       </div>
       <BaseButton size="full">Continue to Payment</BaseButton>
     </div>
@@ -100,6 +100,11 @@ export default {
 
       &--last {
         margin-bottom: 4.2rem;
+      }
+
+      &__value{
+        font-weight: 500;
+        font-size: 1.6rem;
       }
     }
   }

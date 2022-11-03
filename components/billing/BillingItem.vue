@@ -18,7 +18,7 @@
         v-model="note"
         type="text"
         placeholder="Order Note.."
-        style="grid-column: 1/3"
+        class="modifier-input"
       />
       <div class="item__modifiers">
         <BaseButton
@@ -96,6 +96,7 @@ export default {
     border-radius: 50%;
     width: 4rem;
     height: 4rem;
+    min-width: 4rem;
     margin-right: 0.8rem;
     object-fit: cover;
     background: white;
@@ -124,6 +125,10 @@ export default {
       transform: scale(0.7);
       margin-left: -0.7rem;
     }
+  }
+  .modifier-input{
+    grid-column: 1/3;
+    margin-left: .2rem;
   }
 }
 </style>

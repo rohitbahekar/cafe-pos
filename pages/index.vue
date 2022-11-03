@@ -51,6 +51,9 @@ import HorizontalList from '~/components/HorizontalList.vue'
 import Billing from '~/components/billing/BillingMain.vue'
 export default {
   name: 'IndexPage',
+  head(){
+    return {title: 'Home'}
+  },
   components: {
     ItemCard,
     HorizontalList,
