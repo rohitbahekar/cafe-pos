@@ -1,10 +1,18 @@
 <template>
   <div class="billing">
-    <h2 class="billing__number">Orders #34562</h2>
+    <div class="df-row billing__header">
+
+      <h2 class="billing__number">Orders #34562</h2>
+    </div>
     <div class="billing__type">
-      <BaseButton size="small" variation="primary">Dine In </BaseButton>
-      <BaseButton size="small" variation="outline-dark">To Go </BaseButton>
-      <BaseButton size="small" variation="outline-dark">Delivery </BaseButton>
+      <BaseButton 
+        v-for="(billType, index) in billTypes" 
+        :key="billType.value" 
+        size="small" 
+        :variation="billTypeSelectedIndex === index ? 'primary' : 'outline-dark'"
+        @click="billTypeSelectedIndex = index" >
+        {{billType.label }}
+      </BaseButton>
     </div>
     <div class="item-list">
       <div class="item-list__header">
@@ -27,7 +35,7 @@
       </div>
       <div class="footer-item footer-item--last">
         <div class="footer-item__title">Sub total</div>
-        <div class="footer-item__value">₹0</div>
+        <div class="footer-item__value">₹10000</div>
       </div>
       <BaseButton size="full">Continue to Payment</BaseButton>
     </div>
@@ -45,7 +53,31 @@ export default {
   },
   data() {
     return {
+      billTypeSelectedIndex: 0,
+      billTypes: [
+        {
+          label: 'Dine In',
+          value: 'dine-in'
+        },
+        {
+          label: 'To Go',
+          value: 'Takeaway'
+        },
+        {
+          label: 'Delivery',
+          value: 'delivery'
+        },
+        {
+          label: 'Car',
+          value: 'car-delivery'
+        },
+      ],
       items: getItems(),
+    }
+  },
+  methods:{
+    onBillTypeClick(billType){
+      this.billTypeSelected = billType
     }
   },
 }

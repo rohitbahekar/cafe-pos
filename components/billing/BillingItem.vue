@@ -4,7 +4,7 @@
       <img :src="item.image" class="item__thumbnail" />
       <div class="item__title">{{ item.name }}</div>
     </div>
-    <BaseInput v-model="qty" type="number" small />
+    <BaseInput v-model="qty" type="number" small data-show-buttons="true" />
     <div class="item__total">
       <div class="item__price">{{ item.currencySymbol }}{{ item.price }}</div>
       <span>{{ item.currencySymbol }}{{ itemTotal }}</span>
@@ -70,7 +70,9 @@ export default {
   },
   computed: {
     itemTotal() {
-      return this.item.price * parseInt(this.qty)
+      let qty = 0;
+      if(this.qty) qty = parseInt(this.qty)
+      return this.item.price * qty
     },
   },
 }

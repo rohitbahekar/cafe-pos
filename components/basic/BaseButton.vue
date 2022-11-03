@@ -6,6 +6,7 @@
       size ? `btn--${size}` : '',
       type ? `btn--${type}` : '',
     ]"
+    @click="$emit('click', $event)"
   >
     <span class="animate-scale"><slot /></span>
   </button>
