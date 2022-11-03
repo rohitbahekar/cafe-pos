@@ -1,5 +1,5 @@
 <template>
-  <div class="input " :class="[small !== undefined ? 'input--small' : '', icon ? 'input--icon' : '' ]" >
+  <div class="input " :class="[size !== undefined ? 'input--'+size : '', icon ? 'input--icon' : '' ]" >
     <span class="control-buttons control-buttons--plus" @click.stop="onIncemrent">+</span>
     <IconComponent :name="icon" :color="iconColor" size="large" class="input__icon" v-if="icon"></IconComponent>
     <input v-bind="attributes" @input="$emit('input', $event.target.value)" @change="$emit('change', $event)"
@@ -15,7 +15,7 @@
       IconComponent,
     },
     props: {
-      small: {
+      size: {
         type: String,
         default: undefined,
       },

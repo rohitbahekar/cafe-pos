@@ -4,7 +4,7 @@
       <img :src="item.image" class="item__thumbnail" />
       <div class="item__title">{{ item.name }}</div>
     </div>
-    <BaseInput v-model="qty" type="number" small data-show-buttons="true" />
+    <BaseInput v-model="qty" type="number" size="small" data-show-buttons="true" />
     <div class="item__total">
       <div class="item__price">{{ item.currencySymbol }}{{ item.price }}</div>
       <span>{{ item.currencySymbol }}{{ itemTotal }}</span>
@@ -44,7 +44,7 @@
           @click.native="note = 'Less Spicy'"
         >
           <img
-            src="https://img.icons8.com/external-others-ghozy-muhtarom/32/000000/external-vegetable-fruits-and-vegetable-outline-others-ghozy-muhtarom-4.png"
+            src="/icons/hollow-chilli.png"
             alt="Less Spicy"
           />
         </BaseButton>
