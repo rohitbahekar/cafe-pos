@@ -41,25 +41,25 @@
 <script>
 import ItemCard from '@/components/ItemCard.vue'
 import { getItems } from '@/services/items'
-import HorizontalList from '~/components/HorizontalList.vue'
-import Billing from '~/components/billing/BillingMain.vue'
+import HorizontalList from '@/components/HorizontalList.vue'
+import Billing from '@/components/billing/BillingMain.vue'
 export default {
   name: 'IndexPage',
+  layout: 'main',
+  head(){
+    return {title: 'Home'}
+  },
   components: {
     ItemCard,
     HorizontalList,
     Billing,
   },
-  layout: 'main',
   data() {
     return {
       model: '',
       items: getItems(),
       categories: ['Hot Dishes', 'Cold Dishes', 'Soup', 'Grill'],
     }
-  },
-  head() {
-    return { title: 'Home' }
   },
 }
 </script>

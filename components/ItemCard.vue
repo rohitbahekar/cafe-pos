@@ -16,7 +16,7 @@
         >{{ item.qtyAvailable }} {{ item.qtyUnit }}</span
       >
     </p>
-    <BaseButton id="edit-btn" size="full" @click.native="$emit('edit', item)">
+    <BaseButton id="edit-btn" size="full" @click.native="$emit('edit', item)" text-color="primary">
       <IconComponent name="edit" color="primary" class="icon-margin-right" />
       Edit dish</BaseButton
     >
@@ -47,6 +47,7 @@ export default {
   border-radius: 0.8rem;
   align-items: center;
   text-align: center;
+  border: 1px solid $color-dark-bg-1;
 
   &__image {
     margin: 2.4rem 4.7rem 0;
@@ -139,6 +140,5 @@ export default {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   background-color: rgba($color-primary, 0.2);
-  color: $color-primary;
 }
 </style>
