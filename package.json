@@ -1,7 +1,8 @@
 {
-  "name": "cafe-pos2",
+  "name": "cafe-pos",
   "version": "1.0.0",
   "private": true,
+  "author": "rohitbahekar",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",

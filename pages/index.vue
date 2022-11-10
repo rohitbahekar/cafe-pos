@@ -29,26 +29,20 @@
             :item="item"
             read-only
           />
-          <ItemCard
-            v-for="(item, index) in items"
-            :key="'item' + index"
-            :item="item"
-            read-only
-          />
         </div>
       </div>
     </div>
     <div class="homepage__right">
-      <Billing />
+      <Billing :items="items" />
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import ItemCard from '@/components/ItemCard.vue'
-import { getItems } from '@/services/items'
-import HorizontalList from '~/components/HorizontalList.vue'
-import Billing from '~/components/billing/BillingMain.vue'
+import HorizontalList from '@/components/HorizontalList.vue'
+import Billing from '@/components/billing/BillingMain.vue'
 export default {
   name: 'IndexPage',
   components: {
@@ -56,12 +50,24 @@ export default {
     HorizontalList,
     Billing,
   },
+  layout: 'main',
   data() {
-    return {
-      model: '',
-      items: getItems(),
-      categories: ['Hot Dishes', 'Cold Dishes', 'Soup', 'Grill'],
-    }
+    return {}
+  },
+  head() {
+    return { title: 'Home' }
+  },
+  computed: {
+    ...mapState('item', { items: 'items' }),
+    ...mapState('category', { categories: 'categories' }),
+  },
+  created() {
+    this.fetchItems()
+    this.fetchCategories()
+  },
+  methods: {
+    ...mapActions({ fetchItems: 'item/fetchItems' }),
+    ...mapActions({ fetchCategories: 'category/fetchCategories' }),
   },
 }
 </script>

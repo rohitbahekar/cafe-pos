@@ -56,7 +56,7 @@ export default {
       name: 'Cafe POS',
       lang: 'en',
       useWebmanifestExtension: false,
-      start_url: '.',
+      start_url: '/',
       background_color: '#393c49',
       theme_color: '#ea7c69',
     },
