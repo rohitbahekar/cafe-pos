@@ -5,9 +5,11 @@
       variation ? `btn--${variation}` : '',
       size ? `btn--${size}` : '',
       type ? `btn--${type}` : '',
+      textColor ? `btn--text-${textColor}` : '',
     ]"
+    @click="$emit('click', $event)"
   >
-    <span class="animate-scale"><slot /></span>
+    <span class="animate-scale"> <slot /></span>
   </button>
 </template>
 
@@ -26,12 +28,17 @@ export default {
       type: String,
       default: 'primary',
     },
+    textColor: {
+      type: String,
+      default: '',
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@/static/css/variables';
+
 .btn {
   height: 4.8rem;
   background: $color-primary;
@@ -60,6 +67,7 @@ export default {
     background: $color-light;
     color: $color-primary;
     border: 1px solid $color-primary;
+
     & > span {
       color: $color-primary;
     }
@@ -73,9 +81,16 @@ export default {
   &--outline-dark {
     background: $color-dark-bg-2;
     border: 1px solid $color-dark-bg-1;
+
     & > span {
       color: $color-primary;
     }
+  }
+
+  &--dark {
+    background: $color-dark-bg-2;
+    color: $color-light;
+    border: 1px solid $color-dark-bg-1;
   }
 
   &--small {
@@ -84,6 +99,7 @@ export default {
     height: 34px;
     padding: 0.7rem 1.2rem;
   }
+
   &--full {
     width: 100%;
   }
@@ -91,6 +107,14 @@ export default {
   &--icon {
     min-width: 4.8rem;
     width: 4.8rem;
+  }
+
+  &--text-primary > span {
+    color: $color-primary;
+  }
+
+  &--text-secondary > span {
+    color: $color-secondary;
   }
 }
 </style>

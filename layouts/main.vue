@@ -1,6 +1,6 @@
 <template>
   <main class="default-layout">
-    <SideBarMenu />
+    <SideBarMenu :active-route="$route" />
     <Nuxt />
   </main>
 </template>

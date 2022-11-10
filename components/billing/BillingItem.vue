@@ -4,7 +4,12 @@
       <img :src="item.image" class="item__thumbnail" />
       <div class="item__title">{{ item.name }}</div>
     </div>
-    <BaseInput v-model="qty" type="number" small />
+    <BaseInput
+      v-model="qty"
+      type="number"
+      size="small"
+      data-show-buttons="true"
+    />
     <div class="item__total">
       <div class="item__price">{{ item.currencySymbol }}{{ item.price }}</div>
       <span>{{ item.currencySymbol }}{{ itemTotal }}</span>
@@ -18,7 +23,7 @@
         v-model="note"
         type="text"
         placeholder="Order Note.."
-        style="grid-column: 1/3"
+        class="modifier-input"
       />
       <div class="item__modifiers">
         <BaseButton
@@ -43,10 +48,7 @@
           class="modifier-btn"
           @click.native="note = 'Less Spicy'"
         >
-          <img
-            src="https://img.icons8.com/external-others-ghozy-muhtarom/32/000000/external-vegetable-fruits-and-vegetable-outline-others-ghozy-muhtarom-4.png"
-            alt="Less Spicy"
-          />
+          <img src="/icons/hollow-chilli.png" alt="Less Spicy" />
         </BaseButton>
       </div>
     </template>
@@ -70,7 +72,9 @@ export default {
   },
   computed: {
     itemTotal() {
-      return this.item.price * parseInt(this.qty)
+      let qty = 0
+      if (this.qty) qty = parseInt(this.qty)
+      return this.item.price * qty
     },
   },
 }
@@ -96,6 +100,7 @@ export default {
     border-radius: 50%;
     width: 4rem;
     height: 4rem;
+    min-width: 4rem;
     margin-right: 0.8rem;
     object-fit: cover;
     background: white;
@@ -124,6 +129,10 @@ export default {
       transform: scale(0.7);
       margin-left: -0.7rem;
     }
+  }
+  .modifier-input {
+    grid-column: 1/3;
+    margin-left: 0.2rem;
   }
 }
 </style>
