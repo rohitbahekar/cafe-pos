@@ -14,7 +14,6 @@ export const mutations = {
 
 export const actions = {
   async fetchItems({ commit }) {
-    console.log('fetchItems actions')
     const items = await itemService.getItems()
     commit('SET_ITEMS', items)
   },

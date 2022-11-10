@@ -14,7 +14,7 @@ export const mutations = {
 
 export const actions = {
   async fetchCategories({ commit }) {
-    console.log('fetchCategories actions')
+    // console.log('fetchCategories actions');
     const categories = await categoryService.getCategories()
     commit('SET_CATEGORIES', categories)
   },
