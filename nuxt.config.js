@@ -3,7 +3,7 @@ export default {
   target: 'static',
 
   router: {
-    base: process.env.NODE_ENV !== 'production' ? '' : '/cafe-pos/'
+    base: process.env.NODE_ENV !== 'production' ? '' : '/cafe-pos/',
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
