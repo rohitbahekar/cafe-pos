@@ -16,7 +16,12 @@
         >{{ item.qtyAvailable }} {{ item.qtyUnit }}</span
       >
     </p>
-    <BaseButton id="edit-btn" size="full" @click.native="$emit('edit', item)" text-color="primary">
+    <BaseButton
+      id="edit-btn"
+      size="full"
+      text-color="primary"
+      @click.native="$emit('edit', item)"
+    >
       <IconComponent name="edit" color="primary" class="icon-margin-right" />
       Edit dish</BaseButton
     >

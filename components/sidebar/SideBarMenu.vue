@@ -52,15 +52,15 @@
 import SideBarButton from '@/components/sidebar/SideBarButton.vue'
 import IconComponent from '@/components/basic/IconComponent.vue'
 export default {
-  props:{
-    activeRoute: {
-      type: Object,
-      required: true
-    }
-  },
   components: {
     SideBarButton,
     IconComponent,
+  },
+  props: {
+    activeRoute: {
+      type: Object,
+      required: true,
+    },
   },
   data() {
     return {

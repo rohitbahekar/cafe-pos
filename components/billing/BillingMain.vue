@@ -46,12 +46,17 @@
 
 <script>
 import BillingItem from '@/components/billing/BillingItem'
-import { getItems } from '@/services/items'
 import BaseButton from '@/components/basic/BaseButton.vue'
 export default {
   components: {
     BillingItem,
     BaseButton,
+  },
+  props: {
+    items: {
+      type: Array,
+      required: true,
+    },
   },
   data() {
     return {
@@ -74,7 +79,6 @@ export default {
           value: 'car-delivery',
         },
       ],
-      items: getItems(),
     }
   },
   methods: {

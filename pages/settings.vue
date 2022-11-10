@@ -7,20 +7,23 @@
       <div>
         <div class="content-card__header">
           <h2>Product Management</h2>
-          <BaseButton variation="dark"> <IconComponent name="option" color="light" />Manage Categories</BaseButton>
+          <BaseButton variation="dark">
+            <IconComponent name="option" color="light" />Manage
+            Categories</BaseButton
+          >
         </div>
-        <HorizontalList :items="categories" class="horizontal-list"/>
+        <HorizontalList :items="categories" class="horizontal-list" />
       </div>
       <div class="content-card__body">
-          <div class="add-item">
-            <IconComponent name="add" color="primary" size="large" />
-            <p>Add new dish</p>
-          </div>
-          <ItemCard
-            v-for="(item, index) in items"
-            :key="'item' + index"
-            :item="item"
-          />
+        <div class="add-item">
+          <IconComponent name="add" color="primary" size="large" />
+          <p>Add new dish</p>
+        </div>
+        <ItemCard
+          v-for="(item, index) in items"
+          :key="'item' + index"
+          :item="item"
+        />
       </div>
       <div class="content-card__footer">
         <BaseButton variation="outline-dark"> Discard Changes</BaseButton>
@@ -31,20 +34,18 @@
 </template>
 
 <script>
-
 import HorizontalList from '@/components/HorizontalList.vue'
 import ItemCard from '@/components/ItemCard.vue'
-import { getItems } from '@/services/items'
+import { getItems } from '~/services/item'
 import SecondaryMenu from '@/components/SecondaryMenu.vue'
 export default {
-
-  name: 'seti',
-  layout: 'main',
-  components:{
+  name: 'Seti',
+  components: {
     HorizontalList,
     ItemCard,
     SecondaryMenu,
   },
+  layout: 'main',
   data() {
     return {
       items: getItems(),
@@ -114,7 +115,7 @@ export default {
     flex-direction: column;
     row-gap: 2.4rem;
     background-color: $color-dark-bg-2;
-    border-radius: .8rem;
+    border-radius: 0.8rem;
     padding: 2.4rem 0;
     overflow: hidden;
     grid-template-rows: auto 1fr auto;
@@ -123,7 +124,7 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      padding: 0 2.4rem; 
+      padding: 0 2.4rem;
     }
 
     &__body {
@@ -134,10 +135,10 @@ export default {
       overflow-y: scroll;
       justify-content: center;
 
-      .add-item{
+      .add-item {
         height: 30rem;
         width: 22rem;
-        border-radius: .8rem;
+        border-radius: 0.8rem;
         border: 1px dashed $color-primary;
         display: flex;
         flex-direction: column;
@@ -152,24 +153,22 @@ export default {
         }
       }
     }
-    
-    &__footer{
+
+    &__footer {
       margin-top: 4.8rem;
       padding: 0 2.4rem;
-      & > button:first-child{
-        margin-right: .8rem;
+      & > button:first-child {
+        margin-right: 0.8rem;
       }
-
     }
-
   }
 }
 </style>
 <style lang="scss">
 .settings-page {
-  .horizontal-list  {
+  .horizontal-list {
     margin-top: 2.4rem;
-    & .horizontal-list__item:first-child{
+    & .horizontal-list__item:first-child {
       margin-left: 2.4rem;
     }
   }
