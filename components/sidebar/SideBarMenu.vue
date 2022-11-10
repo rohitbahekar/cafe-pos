@@ -33,7 +33,7 @@
       <NuxtLink :key="menuItem.icon" :to="menuItem.route">
         <SideBarButton
           v-slot="slotProps"
-          :is-active="activeIndex == index"
+          :is-active="activeRoute.name === menuItem.routeName"
           @click.native="setActive(index)"
         >
           <IconComponent
@@ -52,6 +52,12 @@
 import SideBarButton from '@/components/sidebar/SideBarButton.vue'
 import IconComponent from '@/components/basic/IconComponent.vue'
 export default {
+  props:{
+    activeRoute: {
+      type: Object,
+      required: true
+    }
+  },
   components: {
     SideBarButton,
     IconComponent,
@@ -60,13 +66,13 @@ export default {
     return {
       activeIndex: 0,
       items: [
-        { icon: 'home', route: '/' },
-        { icon: 'discount', route: '/' },
-        { icon: 'dashboard', route: '/' },
-        { icon: 'message', route: '/' },
-        { icon: 'notification', route: '/' },
-        { icon: 'setting', route: '/settings' },
-        { icon: 'logout', route: '/' },
+        { icon: 'home', routeName: 'index', route: '/' },
+        { icon: 'setting', routeName: 'settings', route: '/settings' },
+        { icon: 'discount', routeName: 'discount', route: '/' },
+        { icon: 'dashboard', routeName: 'dashboard', route: '/' },
+        { icon: 'message', routeName: 'message', route: '/' },
+        { icon: 'notification', routeName: 'notification', route: '/' },
+        { icon: 'logout', routeName: 'logout', route: '/' },
       ],
     }
   },
