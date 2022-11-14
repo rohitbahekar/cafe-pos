@@ -46,7 +46,7 @@ const items = [
 
 const getItems = () => {
   return new Promise((resolve) => {
-    setTimeout(resolve, 2000, items)
+    setTimeout(resolve, 200, items)
   })
 }
 module.exports = {

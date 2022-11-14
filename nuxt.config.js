@@ -1,9 +1,10 @@
+const routePrefix = process.env.NODE_ENV !== 'production' ? '' : '/cafe-pos/'
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
   router: {
-    base: process.env.NODE_ENV !== 'production' ? '' : '/cafe-pos/',
+    base: routePrefix,
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -51,7 +52,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: routePrefix,
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -60,7 +61,7 @@ export default {
       name: 'Cafe POS',
       lang: 'en',
       useWebmanifestExtension: false,
-      start_url: '/',
+      start_url: routePrefix,
       background_color: '#393c49',
       theme_color: '#ea7c69',
     },
