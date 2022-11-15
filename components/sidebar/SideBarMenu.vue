@@ -30,7 +30,13 @@
     </svg>
 
     <template v-for="(menuItem, index) in items">
-      <NuxtLink :key="menuItem.icon" :to="menuItem.route">
+      <NuxtLink
+        :key="menuItem.icon"
+        :to="menuItem.route"
+        :aria-label="menuItem.routeName"
+        class="tooltip"
+        :data-tooltip="menuItem.routeName"
+      >
         <SideBarButton
           v-slot="slotProps"
           :is-active="activeRoute.name === menuItem.routeName"
@@ -68,8 +74,8 @@ export default {
       items: [
         { icon: 'home', routeName: 'index', route: '/' },
         { icon: 'setting', routeName: 'settings', route: '/settings' },
-        { icon: 'discount', routeName: 'discount', route: '/' },
         { icon: 'dashboard', routeName: 'dashboard', route: '/' },
+        { icon: 'discount', routeName: 'discount', route: '/' },
         { icon: 'message', routeName: 'message', route: '/' },
         { icon: 'notification', routeName: 'notification', route: '/' },
         { icon: 'logout', routeName: 'logout', route: '/' },
